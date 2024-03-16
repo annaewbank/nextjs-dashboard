@@ -26,6 +26,11 @@ export function UpdateInvoice({ id }: { id: string }) {
 }
 
 export function DeleteInvoice({ id }: { id: string }) {
+  // Pass id to the Server Action so you can update the right record in your database
+  // You cannot pass the id as an argument: <form action={deleteInvoice(id)}>
+  // Instead, pass id to the Server Action using JS bind
+  // This ensures that any values passed to the Server Action are encoded.
+
   const deleteInvoiceWithId = deleteInvoice.bind(null, id);
 
   return (
