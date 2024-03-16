@@ -65,3 +65,8 @@ Pass the variables to your SQL query.
 Call revalidatePath to clear the client cache and make a new server request.
 Call redirect to redirect the user to the invoice's page.
 */
+
+export async function deleteInvoice(id: string) {
+  await sql`DELETE FROM invoices WHERE id = ${id}`;
+  revalidatePath('/dashboard/invoices');
+}
